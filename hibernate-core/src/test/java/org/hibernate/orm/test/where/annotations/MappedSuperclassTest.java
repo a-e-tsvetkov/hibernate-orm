@@ -40,11 +40,11 @@ public class MappedSuperclassTest {
 		scope.inTransaction(
 				entityManager -> {
 					Child child1 = new SubClass( 1L );
-					child1.flag = true;
+					child1.state = 1;
 					entityManager.persist( child1 );
 
 					Child child2 = new Child( 2L );
-					child2.flag = false;
+					child2.state = 0;
 					entityManager.persist( child2 );
 				}
 		);
@@ -84,11 +84,11 @@ public class MappedSuperclassTest {
 	}
 
 	@MappedSuperclass
-	@SQLRestriction("flag = false")
+	@SQLRestriction("state = 0")
 	public static class Parent {
 		public Parent() {
 		}
 
-		boolean flag;
+		int state;
 	}
 }

@@ -1669,10 +1669,6 @@ public class EntityBinder {
 		return null;
 	}
 
-	public void setWrapIdsInEmbeddedComponents(boolean wrapIdsInEmbeddedComponents) {
-		this.wrapIdsInEmbeddedComponents = wrapIdsInEmbeddedComponents;
-	}
-
 	private void bindNaturalIdCache() {
 		final NaturalIdCache naturalIdCacheAnn =
 				annotatedClass.getAnnotationUsage( NaturalIdCache.class, getSourceModelContext() );
