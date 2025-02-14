@@ -1658,10 +1658,10 @@ public class EntityBinder {
 			return fromClass;
 		}
 		ClassDetails classToCheck = classDetails.getSuperClass();
-		while ( classToCheck != null ) {
+		while ( classToCheck != null
+				&& classToCheck.hasAnnotationUsage( jakarta.persistence.MappedSuperclass.class, sourceModelContext ) ) {
 			final SQLRestriction fromSuper = getOverridableAnnotation( classToCheck, SQLRestriction.class, context );
-			if ( fromSuper != null
-				&& classToCheck.hasAnnotationUsage( jakarta.persistence.MappedSuperclass.class, sourceModelContext )) {
+			if ( fromSuper != null ) {
 				return fromSuper;
 			}
 			classToCheck = classToCheck.getSuperClass();
